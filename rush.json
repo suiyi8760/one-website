@@ -367,11 +367,11 @@
    */
   "projects": [
     {
-      "packageName": "ui",
+      "packageName": "one-website-ui",
       "projectFolder": "packages/ui"
     },
     {
-      "packageName": "server",
+      "packageName": "one-website-server",
       "projectFolder": "packages/server"
     }
   ]

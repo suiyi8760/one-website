@@ -1,0 +1,11 @@
+{
+  "name": "one-website-ui",
+  "version": "1.0.0",
+  "description": "one website webapp",
+  "scripts": {
+    "test": " "
+  },
+  "keywords": [],
+  "author": "johnny",
+  "license": "ISC"
+}
