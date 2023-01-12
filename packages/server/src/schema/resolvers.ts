@@ -1,9 +1,6 @@
-import { readFileSync } from 'fs';
-import { Resolvers } from '../generated/graphql';
+import { IResolvers } from 'mercurius';
 
-export const schema = readFileSync(__dirname + '/schema.graphql', { encoding: 'utf-8' })
-
-export const resolvers: Resolvers = {
+export const resolvers: IResolvers = {
   Query: {
     posts: async (_parent, args, ctx) => {
       return ctx.prisma.post.findMany({

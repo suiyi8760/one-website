@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "one website server side",
   "scripts": {
-    "dev": "ts-node-dev --no-notify --respawn --transpile-only src/index",
-    "start": "node dist/index",
+    "dev": "cross-env NODE_ENV=development ts-node-dev --no-notify --respawn --transpile-only src/index",
+    "start": "cross-env NODE_ENV=production node dist/index",
     "build": "tsc",
     "migrate:dev": "npx prisma migrate dev",
     "migrate:deploy": "npx prisma migrate deploy",
@@ -21,7 +21,8 @@
     "mercurius": "~11.5.0",
     "altair-fastify-plugin": "~5.0.9",
     "fastify-plugin": "~4.5.0",
-    "graphql": "~16.6.0"
+    "graphql": "~16.6.0",
+    "mercurius-codegen": "~5.0.1"
   },
   "devDependencies": {
     "@types/node": "18.11.18",
@@ -29,8 +30,7 @@
     "ts-node-dev": "~2.0.0",
     "ts-node": "~10.9.1",
     "prisma": "~4.8.0",
-    "@graphql-codegen/cli": "2.16.4",
-    "@graphql-codegen/typescript": "2.8.7",
-    "@graphql-codegen/typescript-resolvers": "2.7.12"
+    "prettier": "~2.8.2",
+    "cross-env": "~7.0.3"
   }
 }

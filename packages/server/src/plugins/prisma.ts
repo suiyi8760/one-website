@@ -1,5 +1,4 @@
 import fp from 'fastify-plugin'
-import { FastifyPluginAsync } from 'fastify'
 import { PrismaClient } from '@prisma/client'
 
 declare module 'fastify' {
@@ -8,7 +7,7 @@ declare module 'fastify' {
   }
 }
 
-const prismaPlugin: FastifyPluginAsync = fp(async (server, options) => {
+export const prismaPlugin = fp(async (server, options) => {
   const prisma = new PrismaClient({
     log: ['error', 'warn'],
   })
@@ -22,5 +21,3 @@ const prismaPlugin: FastifyPluginAsync = fp(async (server, options) => {
     await server.prisma.$disconnect()
   })
 })
-
-export default prismaPlugin
