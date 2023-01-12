@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import { Resolvers } from '../generated/graphql';
 
-export const schema = readFileSync('./schema.graphql', { encoding: 'utf-8' })
+export const schema = readFileSync(__dirname + '/schema.graphql', { encoding: 'utf-8' })
 
 export const resolvers: Resolvers = {
   Query: {
@@ -26,6 +26,9 @@ export const resolvers: Resolvers = {
         data: {
           title: args.title,
           content: args.content,
+          createdAt: ctx.now(),
+          // 创建的时候创建时间就是修改时间
+          updatedAt: ctx.now()
         }
       })
     },

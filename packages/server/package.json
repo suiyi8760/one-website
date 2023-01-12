@@ -9,7 +9,7 @@
     "migrate:dev": "npx prisma migrate dev",
     "migrate:deploy": "npx prisma migrate deploy",
     "migrate:reset": "npx prisma migrate reset",
-    "prisma:dev": "migrate:dev && npx prisma generate",
+    "prisma:dev": "rushx migrate:dev && npx prisma generate",
     "gql:ts-gen": "graphql-codegen --config codegen.ts"
   },
   "keywords": [],

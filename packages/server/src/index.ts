@@ -1,11 +1,10 @@
 import Fastify from 'fastify'
+import { install } from './register'
 const fastify = Fastify({
   logger: true
 })
 
-fastify.get('/', async (request, reply) => {
-  return { hello: 'world' }
-})
+install(fastify)
 
 /**
  * Run the server!
