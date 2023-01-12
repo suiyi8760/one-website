@@ -15,7 +15,10 @@
   "license": "ISC",
   "dependencies": {
     "fastify": "~4.11.0",
-    "@prisma/client": "~4.8.1"
+    "@prisma/client": "~4.8.1",
+    "mercurius": "~11.5.0",
+    "altair-fastify-plugin": "~5.0.9",
+    "fastify-plugin": "~4.5.0"
   },
   "devDependencies": {
     "@types/node": "18.11.18",
