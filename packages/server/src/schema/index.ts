@@ -1,23 +1,9 @@
-export const schema = `
-type Mutation {
-  createDraft(body: String!, title: String!): Post
-  publish(draftId: Int!): Post
-}
+import { readFileSync } from 'fs';
+import { Resolvers } from '../generated/graphql';
 
-type Post {
-  body: String
-  id: Int
-  published: Boolean
-  title: String
-}
+export const schema = readFileSync('./schema.graphql', { encoding: 'utf-8' })
 
-type Query {
-  drafts: [Post]
-  posts: [Post]
-}
-`
-
-export const resolvers = {
+export const resolvers: Resolvers = {
   Query: {
     posts: async (_parent, args, ctx) => {
       return ctx.prisma.post.findMany({
