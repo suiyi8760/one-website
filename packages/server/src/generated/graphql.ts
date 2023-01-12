@@ -23,7 +23,7 @@ export type Mutation = {
 
 
 export type MutationCreateDraftArgs = {
-  body: Scalars['String'];
+  content: Scalars['String'];
   title: Scalars['String'];
 };
 
@@ -34,7 +34,7 @@ export type MutationPublishArgs = {
 
 export type Post = {
   __typename?: 'Post';
-  body?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
   published?: Maybe<Scalars['Boolean']>;
   title?: Maybe<Scalars['String']>;
@@ -134,12 +134,12 @@ export type ResolversParentTypes = {
 };
 
 export type MutationResolvers<ContextType = IGqlContext, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  createDraft?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<MutationCreateDraftArgs, 'body' | 'title'>>;
+  createDraft?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<MutationCreateDraftArgs, 'content' | 'title'>>;
   publish?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<MutationPublishArgs, 'draftId'>>;
 };
 
 export type PostResolvers<ContextType = IGqlContext, ParentType extends ResolversParentTypes['Post'] = ResolversParentTypes['Post']> = {
-  body?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  content?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   published?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;

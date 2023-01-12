@@ -25,7 +25,7 @@ export const resolvers: Resolvers = {
       return ctx.prisma.post.create({
         data: {
           title: args.title,
-          body: args.body,
+          content: args.content,
         }
       })
     },
