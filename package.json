@@ -1,0 +1,15 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "dev:server": "pnpm --filter=one-website-server dev",
+    "dev:ui": "pnpm --filter=one-website-ui dev",
+    "release": "lerna version --conventional-commits"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^6.4.1"
+  }
+}
