@@ -4,6 +4,7 @@
   "scripts": {
     "dev:server": "pnpm --filter=one-website-server dev",
     "dev:ui": "pnpm --filter=one-website-ui dev",
+    "dev": "pnpm -r run dev",
     "release": "lerna version --conventional-commits"
   },
   "workspaces": [
