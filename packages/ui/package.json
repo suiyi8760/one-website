@@ -5,7 +5,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "lint": "eslint --fix"
+    "lint": "eslint --cache --fix"
   },
   "keywords": [],
   "author": "johnny",

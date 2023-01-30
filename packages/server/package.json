@@ -10,7 +10,7 @@
     "migrate:deploy": "npx prisma migrate deploy",
     "migrate:reset": "npx prisma migrate reset",
     "prisma:dev": "rushx migrate:dev && npx prisma generate",
-    "lint": "eslint"
+    "lint": "eslint --cache --fix"
   },
   "keywords": [],
   "author": "johnny",
