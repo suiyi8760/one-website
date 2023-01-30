@@ -1,4 +1,4 @@
-import { IResolvers } from 'mercurius';
+import { type IResolvers } from 'mercurius'
 
 export const resolvers: IResolvers = {
   Query: {
@@ -15,7 +15,7 @@ export const resolvers: IResolvers = {
           published: false
         }
       })
-    },
+    }
   },
   Mutation: {
     createDraft: async (_parent, args, ctx) => {
@@ -34,6 +34,6 @@ export const resolvers: IResolvers = {
         where: { id: args.draftId },
         data: { published: true }
       })
-    },
+    }
   }
 }

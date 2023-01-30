@@ -1,31 +1,30 @@
 import fp from 'fastify-plugin'
 import mercurius from 'mercurius'
-import codegenMercurius, { CodegenMercuriusOptions, loadSchemaFiles } from 'mercurius-codegen'
+import codegenMercurius, { type CodegenMercuriusOptions, loadSchemaFiles } from 'mercurius-codegen'
 import { buildSchema } from 'graphql'
 import { resolvers } from '../schema/resolvers'
-import { PrismaClient } from '@prisma/client'
-import { FastifyRequest, FastifyReply } from 'fastify'
+import { type PrismaClient } from '@prisma/client'
+import { type FastifyRequest, type FastifyReply } from 'fastify'
 import { now } from '../utils/now'
 import path from 'path'
 
 export interface IGqlContext {
   prisma: PrismaClient
-  request: FastifyRequest,
-  reply: FastifyReply,
+  request: FastifyRequest
+  reply: FastifyReply
   now: typeof now
 }
 
 declare module 'mercurius' {
-  interface MercuriusContext
-    extends IGqlContext { }
+  interface MercuriusContext extends IGqlContext {}
 }
 
 const codegenMercuriusOptions: CodegenMercuriusOptions = {
   targetPath: path.join(__dirname, '../schema/generated.ts'),
   operationsGlob: path.join(__dirname, '../schema/operations/*.gql'),
   watchOptions: {
-    enabled: process.env.NODE_ENV === 'development',
-  },
+    enabled: process.env.NODE_ENV === 'development'
+  }
 }
 
 export const mercuriusPlugin = fp(async (server, options) => {
@@ -37,8 +36,8 @@ export const mercuriusPlugin = fp(async (server, options) => {
         server.graphql.defineResolvers(resolvers)
 
         codegenMercurius(server, codegenMercuriusOptions).catch(console.error)
-      },
-    },
+      }
+    }
   })
 
   server.register(mercurius, {
@@ -53,7 +52,7 @@ export const mercuriusPlugin = fp(async (server, options) => {
         reply,
         now
       }
-    },
+    }
   })
 
   codegenMercurius(server, codegenMercuriusOptions).catch(console.error)
