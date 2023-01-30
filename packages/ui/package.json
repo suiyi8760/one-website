@@ -5,7 +5,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "lint": "eslint --cache --fix"
+    "lint": "prettier --write && eslint --cache --fix"
   },
   "keywords": [],
   "author": "johnny",
