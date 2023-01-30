@@ -1,14 +1,13 @@
-import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
-import mercurius from 'mercurius'
+import type { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 import AltairFastify from 'altair-fastify-plugin'
-import { PrismaClient } from '@prisma/client'
-import { now } from './utils/now'
+import type { PrismaClient } from '@prisma/client'
+import type { now } from './utils/now'
 import { mercuriusPlugin, prismaPlugin } from './plugins'
 
 export interface IGqlContext {
   prisma: PrismaClient
-  request: FastifyRequest,
-  reply: FastifyReply,
+  request: FastifyRequest
+  reply: FastifyReply
   now: typeof now
 }
 
