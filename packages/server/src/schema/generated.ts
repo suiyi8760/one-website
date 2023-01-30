@@ -1,88 +1,80 @@
-import type { GraphQLResolveInfo } from "graphql";
-import type { MercuriusContext } from "mercurius";
-export type Maybe<T> = T | null;
-export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
+import type { GraphQLResolveInfo } from 'graphql'
+import type { MercuriusContext } from 'mercurius'
+export type Maybe<T> = T | null
+export type InputMaybe<T> = Maybe<T>
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] }
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> }
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> }
 export type ResolverFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
   args: TArgs,
   context: TContext,
   info: GraphQLResolveInfo
 ) =>
-  | Promise<import("mercurius-codegen").DeepPartial<TResult>>
-  | import("mercurius-codegen").DeepPartial<TResult>;
-export type RequireFields<T, K extends keyof T> = Omit<T, K> & {
-  [P in K]-?: NonNullable<T[P]>;
-};
+  | Promise<import('mercurius-codegen').DeepPartial<TResult>>
+  | import('mercurius-codegen').DeepPartial<TResult>
+export type RequireFields<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: NonNullable<T[P]> }
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
-  _FieldSet: any;
-};
+  ID: string
+  String: string
+  Boolean: boolean
+  Int: number
+  Float: number
+  _FieldSet: any
+}
 
 export type Mutation = {
-  __typename?: "Mutation";
-  createDraft?: Maybe<Post>;
-  publish?: Maybe<Post>;
-};
+  __typename?: 'Mutation'
+  createDraft?: Maybe<Post>
+  publish?: Maybe<Post>
+}
 
 export type MutationcreateDraftArgs = {
-  content: Scalars["String"];
-  title: Scalars["String"];
-};
+  content: Scalars['String']
+  title: Scalars['String']
+}
 
 export type MutationpublishArgs = {
-  draftId: Scalars["Int"];
-};
+  draftId: Scalars['Int']
+}
 
 export type Post = {
-  __typename?: "Post";
-  content?: Maybe<Scalars["String"]>;
-  id?: Maybe<Scalars["Int"]>;
-  published?: Maybe<Scalars["Boolean"]>;
-  title?: Maybe<Scalars["String"]>;
-};
+  __typename?: 'Post'
+  content?: Maybe<Scalars['String']>
+  id?: Maybe<Scalars['Int']>
+  published?: Maybe<Scalars['Boolean']>
+  title?: Maybe<Scalars['String']>
+}
 
 export type Query = {
-  __typename?: "Query";
-  drafts?: Maybe<Array<Maybe<Post>>>;
-  posts?: Maybe<Array<Maybe<Post>>>;
-};
+  __typename?: 'Query'
+  drafts?: Maybe<Array<Maybe<Post>>>
+  posts?: Maybe<Array<Maybe<Post>>>
+}
 
-export type ResolverTypeWrapper<T> = Promise<T> | T;
+export type ResolverTypeWrapper<T> = Promise<T> | T
 
 export type ResolverWithResolve<TResult, TParent, TContext, TArgs> = {
-  resolve: ResolverFn<TResult, TParent, TContext, TArgs>;
-};
+  resolve: ResolverFn<TResult, TParent, TContext, TArgs>
+}
 export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> =
   | ResolverFn<TResult, TParent, TContext, TArgs>
-  | ResolverWithResolve<TResult, TParent, TContext, TArgs>;
+  | ResolverWithResolve<TResult, TParent, TContext, TArgs>
 
 export type SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
   args: TArgs,
   context: TContext,
   info: GraphQLResolveInfo
-) => AsyncIterable<TResult> | Promise<AsyncIterable<TResult>>;
+) => AsyncIterable<TResult> | Promise<AsyncIterable<TResult>>
 
 export type SubscriptionResolveFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
   args: TArgs,
   context: TContext,
   info: GraphQLResolveInfo
-) => TResult | Promise<TResult>;
+) => TResult | Promise<TResult>
 
 export interface SubscriptionSubscriberObject<
   TResult,
@@ -91,34 +83,18 @@ export interface SubscriptionSubscriberObject<
   TContext,
   TArgs
 > {
-  subscribe: SubscriptionSubscribeFn<
-    { [key in TKey]: TResult },
-    TParent,
-    TContext,
-    TArgs
-  >;
-  resolve?: SubscriptionResolveFn<
-    TResult,
-    { [key in TKey]: TResult },
-    TContext,
-    TArgs
-  >;
+  subscribe: SubscriptionSubscribeFn<{ [key in TKey]: TResult }, TParent, TContext, TArgs>
+  resolve?: SubscriptionResolveFn<TResult, { [key in TKey]: TResult }, TContext, TArgs>
 }
 
 export interface SubscriptionResolverObject<TResult, TParent, TContext, TArgs> {
-  subscribe: SubscriptionSubscribeFn<any, TParent, TContext, TArgs>;
-  resolve: SubscriptionResolveFn<TResult, any, TContext, TArgs>;
+  subscribe: SubscriptionSubscribeFn<any, TParent, TContext, TArgs>
+  resolve: SubscriptionResolveFn<TResult, any, TContext, TArgs>
 }
 
-export type SubscriptionObject<
-  TResult,
-  TKey extends string,
-  TParent,
-  TContext,
-  TArgs
-> =
+export type SubscriptionObject<TResult, TKey extends string, TParent, TContext, TArgs> =
   | SubscriptionSubscriberObject<TResult, TKey, TParent, TContext, TArgs>
-  | SubscriptionResolverObject<TResult, TParent, TContext, TArgs>;
+  | SubscriptionResolverObject<TResult, TParent, TContext, TArgs>
 
 export type SubscriptionResolver<
   TResult,
@@ -127,144 +103,122 @@ export type SubscriptionResolver<
   TContext = {},
   TArgs = {}
 > =
-  | ((
-      ...args: any[]
-    ) => SubscriptionObject<TResult, TKey, TParent, TContext, TArgs>)
-  | SubscriptionObject<TResult, TKey, TParent, TContext, TArgs>;
+  | ((...args: any[]) => SubscriptionObject<TResult, TKey, TParent, TContext, TArgs>)
+  | SubscriptionObject<TResult, TKey, TParent, TContext, TArgs>
 
 export type TypeResolveFn<TTypes, TParent = {}, TContext = {}> = (
   parent: TParent,
   context: TContext,
   info: GraphQLResolveInfo
-) => Maybe<TTypes> | Promise<Maybe<TTypes>>;
+) => Maybe<TTypes> | Promise<Maybe<TTypes>>
 
 export type IsTypeOfResolverFn<T = {}, TContext = {}> = (
   obj: T,
   context: TContext,
   info: GraphQLResolveInfo
-) => boolean | Promise<boolean>;
+) => boolean | Promise<boolean>
 
-export type NextResolverFn<T> = () => Promise<T>;
+export type NextResolverFn<T> = () => Promise<T>
 
-export type DirectiveResolverFn<
-  TResult = {},
-  TParent = {},
-  TContext = {},
-  TArgs = {}
-> = (
+export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs = {}> = (
   next: NextResolverFn<TResult>,
   parent: TParent,
   args: TArgs,
   context: TContext,
   info: GraphQLResolveInfo
-) => TResult | Promise<TResult>;
+) => TResult | Promise<TResult>
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  Mutation: ResolverTypeWrapper<{}>;
-  String: ResolverTypeWrapper<Scalars["String"]>;
-  Int: ResolverTypeWrapper<Scalars["Int"]>;
-  Post: ResolverTypeWrapper<Post>;
-  Boolean: ResolverTypeWrapper<Scalars["Boolean"]>;
-  Query: ResolverTypeWrapper<{}>;
-};
+  Mutation: ResolverTypeWrapper<{}>
+  String: ResolverTypeWrapper<Scalars['String']>
+  Int: ResolverTypeWrapper<Scalars['Int']>
+  Post: ResolverTypeWrapper<Post>
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>
+  Query: ResolverTypeWrapper<{}>
+}
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  Mutation: {};
-  String: Scalars["String"];
-  Int: Scalars["Int"];
-  Post: Post;
-  Boolean: Scalars["Boolean"];
-  Query: {};
-};
+  Mutation: {}
+  String: Scalars['String']
+  Int: Scalars['Int']
+  Post: Post
+  Boolean: Scalars['Boolean']
+  Query: {}
+}
 
 export type MutationResolvers<
   ContextType = MercuriusContext,
-  ParentType extends ResolversParentTypes["Mutation"] = ResolversParentTypes["Mutation"]
+  ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']
 > = {
   createDraft?: Resolver<
-    Maybe<ResolversTypes["Post"]>,
+    Maybe<ResolversTypes['Post']>,
     ParentType,
     ContextType,
-    RequireFields<MutationcreateDraftArgs, "content" | "title">
-  >;
+    RequireFields<MutationcreateDraftArgs, 'content' | 'title'>
+  >
   publish?: Resolver<
-    Maybe<ResolversTypes["Post"]>,
+    Maybe<ResolversTypes['Post']>,
     ParentType,
     ContextType,
-    RequireFields<MutationpublishArgs, "draftId">
-  >;
-};
+    RequireFields<MutationpublishArgs, 'draftId'>
+  >
+}
 
 export type PostResolvers<
   ContextType = MercuriusContext,
-  ParentType extends ResolversParentTypes["Post"] = ResolversParentTypes["Post"]
+  ParentType extends ResolversParentTypes['Post'] = ResolversParentTypes['Post']
 > = {
-  content?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
-  id?: Resolver<Maybe<ResolversTypes["Int"]>, ParentType, ContextType>;
-  published?: Resolver<
-    Maybe<ResolversTypes["Boolean"]>,
-    ParentType,
-    ContextType
-  >;
-  title?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
-  isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
+  content?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>
+  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>
+  published?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>
+  title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>
+  isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
+}
 
 export type QueryResolvers<
   ContextType = MercuriusContext,
-  ParentType extends ResolversParentTypes["Query"] = ResolversParentTypes["Query"]
+  ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
 > = {
-  drafts?: Resolver<
-    Maybe<Array<Maybe<ResolversTypes["Post"]>>>,
-    ParentType,
-    ContextType
-  >;
-  posts?: Resolver<
-    Maybe<Array<Maybe<ResolversTypes["Post"]>>>,
-    ParentType,
-    ContextType
-  >;
-};
+  drafts?: Resolver<Maybe<Array<Maybe<ResolversTypes['Post']>>>, ParentType, ContextType>
+  posts?: Resolver<Maybe<Array<Maybe<ResolversTypes['Post']>>>, ParentType, ContextType>
+}
 
 export type Resolvers<ContextType = MercuriusContext> = {
-  Mutation?: MutationResolvers<ContextType>;
-  Post?: PostResolvers<ContextType>;
-  Query?: QueryResolvers<ContextType>;
-};
+  Mutation?: MutationResolvers<ContextType>
+  Post?: PostResolvers<ContextType>
+  Query?: QueryResolvers<ContextType>
+}
 
 export type Loader<TReturn, TObj, TParams, TContext> = (
   queries: Array<{
-    obj: TObj;
-    params: TParams;
+    obj: TObj
+    params: TParams
   }>,
   context: TContext & {
-    reply: import("fastify").FastifyReply;
+    reply: import('fastify').FastifyReply
   }
-) => Promise<Array<import("mercurius-codegen").DeepPartial<TReturn>>>;
+) => Promise<Array<import('mercurius-codegen').DeepPartial<TReturn>>>
 export type LoaderResolver<TReturn, TObj, TParams, TContext> =
   | Loader<TReturn, TObj, TParams, TContext>
   | {
-      loader: Loader<TReturn, TObj, TParams, TContext>;
+      loader: Loader<TReturn, TObj, TParams, TContext>
       opts?: {
-        cache?: boolean;
-      };
-    };
+        cache?: boolean
+      }
+    }
 export interface Loaders<
-  TContext = import("mercurius").MercuriusContext & {
-    reply: import("fastify").FastifyReply;
-  }
+  TContext = import('mercurius').MercuriusContext & { reply: import('fastify').FastifyReply }
 > {
   Post?: {
-    content?: LoaderResolver<Maybe<Scalars["String"]>, Post, {}, TContext>;
-    id?: LoaderResolver<Maybe<Scalars["Int"]>, Post, {}, TContext>;
-    published?: LoaderResolver<Maybe<Scalars["Boolean"]>, Post, {}, TContext>;
-    title?: LoaderResolver<Maybe<Scalars["String"]>, Post, {}, TContext>;
-  };
+    content?: LoaderResolver<Maybe<Scalars['String']>, Post, {}, TContext>
+    id?: LoaderResolver<Maybe<Scalars['Int']>, Post, {}, TContext>
+    published?: LoaderResolver<Maybe<Scalars['Boolean']>, Post, {}, TContext>
+    title?: LoaderResolver<Maybe<Scalars['String']>, Post, {}, TContext>
+  }
 }
-declare module "mercurius" {
-  interface IResolvers
-    extends Resolvers<import("mercurius").MercuriusContext> {}
+declare module 'mercurius' {
+  interface IResolvers extends Resolvers<import('mercurius').MercuriusContext> {}
   interface MercuriusLoaders extends Loaders {}
 }
