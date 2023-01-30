@@ -21,4 +21,7 @@ const start = async () => {
     process.exit(1)
   }
 }
-start()
+
+start().catch(err => {
+  fastify.log.error(err)
+})
