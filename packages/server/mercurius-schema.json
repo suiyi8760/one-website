@@ -1,0 +1,3 @@
+[
+  "type Mutation {\n  createDraft(content: String!, title: String!): Post\n  publish(draftId: Int!): Post\n}\n\ntype Post {\n  content: String\n  id: Int\n  published: Boolean\n  title: String\n}\n\ntype Query {\n  drafts: [Post]\n  posts: [Post]\n}"
+]
