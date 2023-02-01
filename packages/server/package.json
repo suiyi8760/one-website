@@ -17,6 +17,7 @@
   "author": "johnny",
   "license": "ISC",
   "dependencies": {
+    "@fastify/cors": "^8.2.0",
     "@prisma/client": "~4.8.1",
     "altair-fastify-plugin": "~5.0.9",
     "fastify": "~4.11.0",

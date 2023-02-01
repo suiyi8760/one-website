@@ -1,13 +1,18 @@
-import { createSignal, onCleanup } from 'solid-js'
-import { render } from 'solid-js/web'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import { createClient, Provider, defaultExchanges } from 'urql'
+import { devtoolsExchange } from '@urql/devtools'
 
-const CountingComponent = () => {
-  const [count, setCount] = createSignal(0)
-  const interval = setInterval(() => setCount(c => c + 1), 1000)
-  onCleanup(() => {
-    clearInterval(interval)
-  })
-  return <div>Count value is {count()}</div>
-}
+const client = createClient({
+  url: 'http://localhost:3000/graphql',
+  exchanges: [devtoolsExchange, ...defaultExchanges]
+})
 
-render(() => <CountingComponent />, document.getElementById('app') as HTMLElement)
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+    <Provider value={client}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+)
