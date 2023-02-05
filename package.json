@@ -19,7 +19,7 @@
     ]
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,js,jsx,vue}": [
+    "packages/**/*.{ts,tsx,js,jsx,vue}": [
       "pnpm -r run lint",
       "git add"
     ]
