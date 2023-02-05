@@ -1,15 +1,18 @@
 import { useQuery } from 'urql'
+import { graphql } from '../gql'
 
 export default function App() {
   const [result] = useQuery({
-    query: `{
-      drafts {
-        content
-        id
-        published
-        title
+    query: graphql(`
+      query GetDrafts {
+        drafts {
+          content
+          id
+          published
+          title
+        }
       }
-    }`
+    `)
   })
 
   const { data, fetching, error } = result
