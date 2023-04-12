@@ -24,8 +24,8 @@ export default function App() {
     <>
       <div>Drafts</div>
       <ul>
-        {data.drafts.map(todo => (
-          <li key={todo.id}>{todo.title}</li>
+        {data?.drafts?.map(todo => (
+          <li key={todo?.id}>{todo?.title}</li>
         ))}
       </ul>
     </>
